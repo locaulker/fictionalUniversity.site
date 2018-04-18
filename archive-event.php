@@ -35,7 +35,7 @@
     <?php endwhile; ?>
     <?php echo paginate_links(); ?>
     <hr class="section-break">
-    <div>Looking for a recap of Past Events? Checkout our <a class="btn btn--beige" href="<?php echo site_url('/past-events'); ?>">Past Events</a>Archive</div>
+    <div>Looking for a recap of Past Events? Checkout our <a href="<?php echo site_url('/past-events'); ?>">Past Events Archive</a></div>
   </div><!-- .container -->
 
 <?php get_footer(); ?>
