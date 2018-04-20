@@ -1,7 +1,7 @@
 <?php
 
 function pageBanner($args = NULL) {
-  
+  // Page Banner Logic
   if (!$args['title']) {
     $args['title'] = get_the_title();
   }
@@ -19,6 +19,7 @@ function pageBanner($args = NULL) {
   }
 
   ?>
+    <!-- Start Banner HTML -->
     <div class="page-banner">
       <div class="page-banner__bg-image" style="background-image: url(
         <?php echo $args['photo']; ?>);">
@@ -29,7 +30,7 @@ function pageBanner($args = NULL) {
           <p><?php echo $args['subtitle']; ?></p>
         </div>
       </div>  
-    </div>
+    </div><!-- End Banner HTML -->
   <?php
 }
 
