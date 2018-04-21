@@ -72,11 +72,23 @@ $relatedProfessors = new WP_Query(array(
       while($homepageEvents->have_posts()) : $homepageEvents->the_post();
         get_template_part('template-parts/content-event');
       endwhile; wp_reset_postdata();
-    }  
+    }
+
+    $relatedCampuses = get_field('related_campus');
+
+    if ($relatedCampuses) {
+      echo '<hr class="section-break">';
+      echo '<h2 class="headline headline--medium">' . get_the_title() . ' is Available at These Campuses:</h2>';
+
+      echo '<ul class="min-list link-list">';
+        foreach($relatedCampuses as $campus) { ?>
+          <ll><a href="<?php echo get_the_permalink($campus); ?>"><?php echo get_the_title($campus); ?></a></ll>
+        <?php
+        }
+      echo '</ul>';
+    }
   ?>
 
-        
- 
 </div>
 
 <?php endwhile;
