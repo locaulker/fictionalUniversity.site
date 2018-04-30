@@ -13701,6 +13701,7 @@ function () {
       }, 301);
       console.log("Our open method just ran");
       this.isOverlayOpen = true;
+      return false;
     }
   }, {
     key: "closeOverlay",
