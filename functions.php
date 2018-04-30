@@ -117,7 +117,7 @@ function universityMapKey($api) {
 add_filter( 'acf/fields/google_map/api', 'universityMapKey' );
 
 
-// Redirect subscriber accountsfrom admin area to homrpage
+// Redirect subscriber accounts from admin area to homepage
 add_action( 'admin_init', 'redirectSubsToFrontend');
 function redirectSubsToFrontend() {
   $ourCurrentUser = wp_get_current_user();
@@ -133,4 +133,22 @@ function noSubsAdminBar() {
   if (count($ourCurrentUser->roles) == 1 AND $ourCurrentUser->roles[0] == 'subscriber') {
     show_admin_bar(false);
   }
+}
+
+// Customize backend WordPress Admin/User Login Screen
+add_filter('login_headerurl', 'ourHeaderUrl');
+function ourHeaderUrl() {
+  return esc_url(site_url('/'));
+}
+
+add_action('login_enqueue_scripts', 'ourLoginCSS');
+function ourLoginCSS() {
+  wp_enqueue_style('university_main_styles', get_stylesheet_uri(), NULL, microtime());
+  $universityFonts = '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i';
+  wp_enqueue_style('custom-goggle-fonts', $universityFonts);
+}
+
+add_filter('login_headertitle', 'ourLoginTitle');
+function ourLoginTitle() {
+  return get_bloginfo('name');
 }
